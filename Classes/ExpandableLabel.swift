@@ -266,10 +266,19 @@ extension ExpandableLabel {
         linkText.append(linkName)
 
         let lengthDifference = lineTextTrimmedNewLines.string.composedCount - linkText.string.composedCount
+        
+
         let truncatedString = lineTextTrimmedNewLines.attributedSubstring(
             from: NSMakeRange(0, lengthDifference >= 0 ? lengthDifference : lineTextTrimmedNewLines.string.composedCount))
         let lineTextWithLink = NSMutableAttributedString(attributedString: truncatedString)
+        
         lineTextWithLink.append(linkText)
+        if lineTextWithLink.size().width > self.frame.width {
+            while lineTextWithLink.size().width > self.frame.width {
+                lineTextWithLink.deleteCharacters(in: NSRange(location: lineTextWithLink.length - linkText.length - 1, length: 1))
+            }
+        }
+        
         return lineTextWithLink
     }
 
