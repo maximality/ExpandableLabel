@@ -408,7 +408,7 @@ private extension NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
         
-        paragraphStyle.lineHeightMultiple = 1.15
+        paragraphStyle.lineHeightMultiple = 1.2
 
         let copy = NSMutableAttributedString(attributedString: self)
         let range = NSRange(location: 0, length: copy.length)
